@@ -7,9 +7,10 @@
 </ion-header>
 
 <ion-content padding>
+  <div id="mapa"></div>
   <img [src]="imagenCamara" >
   <ion-fab bottom right>
-    <button ion-fab>
+    <button ion-fab (click)="tomarFoto()">
       <ion-icon name="camera"></ion-icon>
     </button>
   </ion-fab>
