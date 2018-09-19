@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { GoogleMap, GoogleMaps, GoogleMapOptions } from '@ionic-native/google-maps';
+import { GoogleMap, GoogleMaps, GoogleMapOptions, Marker, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 @Component({
   selector: 'page-home',
@@ -34,6 +34,19 @@ export class HomePage {
         }
     } ;
     this.mapa = GoogleMaps.create('mapa', opcionesMapa);
+
+    let marker: Marker = this.mapa.addMarkerSync({
+      title: 'Ionic',
+      icon: 'blue',
+      animation: 'DROP',
+      position: {
+        lat: 4.6810175,
+        lng: -74.0478558
+      }
+    });
+    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+      alert('clicked');
+    });
   }
   tomarFoto(){
     let opciones: CameraOptions = {
